@@ -13,7 +13,7 @@ CREATE TABLE task
     name        VARCHAR(255) NOT NULL,
     due_date    DATE,
     description TEXT,
-    state       VARCHAR(50)  NOT NULL
+    status      VARCHAR(50)  NOT NULL
 );
 
 CREATE TABLE category

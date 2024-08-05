@@ -19,8 +19,9 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "state")
-    private String state;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private String status;
 
     @Column(name = "due_date")
     private String dueDate;
