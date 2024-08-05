@@ -1,6 +1,6 @@
 CREATE TABLE user
 (
-    user_id   INT PRIMARY KEY,
+    user_id   INT PRIMARY KEY AUTO_INCREMENT,
     username  VARCHAR(50)  NOT NULL,
     email     VARCHAR(255) NOT NULL,
     password  VARCHAR(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE user
 
 CREATE TABLE task
 (
-    task_id     INT PRIMARY KEY,
+    task_id     INT PRIMARY KEY AUTO_INCREMENT,
     name        VARCHAR(255) NOT NULL,
     due_date    DATE,
     description TEXT,
@@ -18,13 +18,13 @@ CREATE TABLE task
 
 CREATE TABLE category
 (
-    category_id   INT PRIMARY KEY,
+    category_id   INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE user_on_task
 (
-    user_on_task_id INT PRIMARY KEY,
+    user_on_task_id INT PRIMARY KEY AUTO_INCREMENT,
     user_fk         INT,
     task_fk         INT,
     FOREIGN KEY (user_fk) REFERENCES user (user_id) ON DELETE CASCADE,
@@ -33,7 +33,7 @@ CREATE TABLE user_on_task
 
 CREATE TABLE user_task
 (
-    user_task_id    INT PRIMARY KEY,
+    user_task_id    INT PRIMARY KEY AUTO_INCREMENT,
     user_on_task_fk INT,
     category_fk     INT,
     FOREIGN KEY (user_on_task_fk) REFERENCES user_on_task (user_on_task_id) ON DELETE CASCADE,
