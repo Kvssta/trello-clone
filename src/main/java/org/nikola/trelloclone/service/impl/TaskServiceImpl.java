@@ -1,8 +1,8 @@
 package org.nikola.trelloclone.service.impl;
 
-import org.nikola.trelloclone.service.UserService;
+import org.nikola.trelloclone.service.TaskService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class TaskServiceImpl implements TaskService {
 }
