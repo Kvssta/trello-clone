@@ -8,6 +8,7 @@ import org.nikola.trelloclone.repository.BoardTaskRepository;
 import org.nikola.trelloclone.service.BoardService;
 import org.nikola.trelloclone.service.BoardTaskService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/board")
+@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 public class BoardController {
 
     private final BoardTaskRepository boardTaskRepository;
