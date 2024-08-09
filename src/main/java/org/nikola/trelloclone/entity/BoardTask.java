@@ -14,10 +14,10 @@ public class BoardTask {
     private Integer id;
 
     @ManyToOne
-    @Column(name = "task_fk")
-    private UserTask user;
+    @JoinColumn(name = "task_fk", referencedColumnName = "user_task_id")
+    private UserTask userTask;
 
     @ManyToOne
-    @Column(name = "board_fk")
+    @JoinColumn(name = "board_fk", referencedColumnName = "board_id")
     private Board board;
 }

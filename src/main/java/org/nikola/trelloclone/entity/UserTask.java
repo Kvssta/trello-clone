@@ -9,20 +9,20 @@ import lombok.Data;
 public class UserTask {
 
     @Id
-    @Column(name = "user_on_task_id")
+    @Column(name = "user_task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @Column(name = "user_fk")
+    @JoinColumn(name = "user_fk", referencedColumnName = "user_id")
     private User user;
 
     @ManyToOne
-    @Column(name = "task_fk")
+    @JoinColumn(name = "task_fk", referencedColumnName = "task_id")
     private Task task;
 
     @ManyToOne
-    @Column(name = "category_fk")
+    @JoinColumn(name = "category_fk", referencedColumnName = "category_id")
     private Category category;
 
 }
