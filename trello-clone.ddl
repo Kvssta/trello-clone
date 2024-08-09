@@ -22,20 +22,29 @@ CREATE TABLE category
     category_name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE user_on_task
+CREATE TABLE board
 (
-    user_on_task_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_fk         INT,
-    task_fk         INT,
-    FOREIGN KEY (user_fk) REFERENCES user (user_id) ON DELETE CASCADE,
-    FOREIGN KEY (task_fk) REFERENCES task (task_id) ON DELETE SET NULL
+    board_id    INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(255) NOT NULL,
+    description TEXT
 );
 
 CREATE TABLE user_task
 (
-    user_task_id    INT PRIMARY KEY AUTO_INCREMENT,
-    user_on_task_fk INT,
+    user_task_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_fk         INT,
+    task_fk         INT,
     category_fk     INT,
-    FOREIGN KEY (user_on_task_fk) REFERENCES user_on_task (user_on_task_id) ON DELETE CASCADE,
-    FOREIGN KEY (category_fk) REFERENCES category (category_id)
+    FOREIGN KEY (user_fk) REFERENCES user (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (task_fk) REFERENCES task (task_id) ON DELETE SET NULL,
+    FOREIGN KEY (category_fk) REFERENCES category (category_id) ON DELETE SET NULL
+);
+
+CREATE TABLE board_task
+(
+    board_task_id INT PRIMARY KEY AUTO_INCREMENT,
+    task_fk       INT,
+    board_fk      INT,
+    FOREIGN KEY (task_fk) REFERENCES user_task (user_task_id) ON DELETE CASCADE,
+    FOREIGN KEY (board_fk) REFERENCES board (board_id) ON DELETE SET NULL
 );

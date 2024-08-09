@@ -5,24 +5,19 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "user_task")
-public class UserTask {
+@Table(name = "board_task")
+public class BoardTask {
 
     @Id
-    @Column(name = "user_on_task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "board_task_id")
     private Integer id;
 
     @ManyToOne
-    @Column(name = "user_fk")
-    private User user;
-
-    @ManyToOne
     @Column(name = "task_fk")
-    private Task task;
+    private UserTask user;
 
     @ManyToOne
-    @Column(name = "category_fk")
-    private Category category;
-
+    @Column(name = "board_fk")
+    private Board board;
 }
