@@ -6,9 +6,7 @@ import org.nikola.trelloclone.repository.CategoryRepository;
 import org.nikola.trelloclone.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +24,15 @@ public class CategoryController {
         return ResponseEntity.ok(categoryRepository.findAll());
     }
 
+    @DeleteMapping("/{categoryId}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable(name="categoryId") Integer categoryId) {
+        categoryRepository.deleteById(categoryId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Void> deleteCategory(@RequestBody Category category) {
+        categoryRepository.save(category);
+        return ResponseEntity.noContent().build();
+    }
 }
