@@ -18,13 +18,13 @@ public class UserTaskController {
     private final UserTaskService userTaskService;
     private final UserTaskRepository userTaskRepository;
 
-    @GetMapping("/{userTaskId}")
-    public ResponseEntity<UserTask> getUserTask(@PathVariable Integer userTaskId) {
-        return ResponseEntity.ok(userTaskRepository.findById(userTaskId).orElse(null));
-    }
-
     @PostMapping()
     public ResponseEntity<UserTask> createUserTask(@RequestBody NewUserTaskDTO userTask) {
         return ResponseEntity.ok(userTaskService.createUserTask(userTask));
+    }
+
+    @PutMapping()
+    public ResponseEntity<UserTask> updateUserTask(@RequestBody NewUserTaskDTO userTask) {
+        return ResponseEntity.ok(userTaskService.updateUserTask(userTask));
     }
 }

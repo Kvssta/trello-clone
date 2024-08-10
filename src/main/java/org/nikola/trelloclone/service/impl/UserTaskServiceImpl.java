@@ -33,4 +33,19 @@ public class UserTaskServiceImpl implements UserTaskService {
         boardTaskRepository.save(boardTask);
         return newUserTask;
     }
+
+    @Override
+    public UserTask updateUserTask(NewUserTaskDTO userTask) {
+        Task newTask = taskRepository.findById(userTask.getUserTask().getTask().getId()).orElseThrow();
+        newTask.setName(userTask.getUserTask().getTask().getName());
+        newTask.setDescription(userTask.getUserTask().getTask().getDescription());
+        newTask.setDueDate(userTask.getUserTask().getTask().getDueDate());
+        newTask.setStatus(userTask.getUserTask().getTask().getStatus());
+        taskRepository.save(newTask);
+        UserTask newUserTask = userTaskRepository.findById(userTask.getUserTask().getId()).orElseThrow();
+        newUserTask.setTask(newTask);
+        newUserTask.setUser(userTask.getUserTask().getUser());
+        newUserTask.setCategory(userTask.getUserTask().getCategory());
+        return userTaskRepository.save(newUserTask);
+    }
 }

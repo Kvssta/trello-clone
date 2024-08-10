@@ -37,4 +37,9 @@ public class BoardController {
     public ResponseEntity<List<Board>> getAllTasksForBoard() {
         return ResponseEntity.ok(boardRepository.findAll().stream().distinct().collect(Collectors.toList()));
     }
+
+    @GetMapping("/{boardTaskId}/task")
+    public ResponseEntity<BoardTask> getUserTask(@PathVariable Integer boardTaskId) {
+        return ResponseEntity.ok(boardTaskRepository.findById(boardTaskId).orElse(null));
+    }
 }

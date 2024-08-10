@@ -6,4 +6,6 @@ import org.nikola.trelloclone.entity.UserTask;
 public interface UserTaskService {
 
     UserTask createUserTask(NewUserTaskDTO userTask);
+
+    UserTask updateUserTask(NewUserTaskDTO userTask);
 }
