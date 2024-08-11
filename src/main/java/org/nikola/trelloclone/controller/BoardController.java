@@ -50,4 +50,9 @@ public class BoardController {
         boardRepository.deleteById(boardId);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/user-tasks")
+    public ResponseEntity<List<BoardTask>> getUserTasks(@RequestParam(name = "boardId") Integer boardId, @RequestParam(name = "userId") Integer userId) {
+        return ResponseEntity.ok(boardTaskService.findAllByBoardIdAndUserId(boardId, userId));
+    }
 }
