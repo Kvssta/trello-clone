@@ -24,6 +24,11 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable(name="userId") Integer userId) {
+        return ResponseEntity.ok(userRepository.findById(userId).get());
+    }
+
     @DeleteMapping("/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable(name="userId") Integer userId) {
         userRepository.deleteById(userId);
@@ -33,5 +38,10 @@ public class UserController {
     @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.createNewUser(user));
+    }
+
+    @PutMapping()
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return ResponseEntity.ok(userRepository.save(user));
     }
 }
