@@ -29,4 +29,9 @@ public class UserController {
         userRepository.deleteById(userId);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping()
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.createNewUser(user));
+    }
 }
