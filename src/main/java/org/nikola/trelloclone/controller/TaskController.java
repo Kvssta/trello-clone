@@ -22,4 +22,5 @@ public class TaskController {
     public ResponseEntity<Task> changeStatus(@RequestBody Task task, @RequestParam(name="newStatus") String newStatus) {
         return ResponseEntity.ok(taskService.changeStatus(task, newStatus));
     }
+
 }

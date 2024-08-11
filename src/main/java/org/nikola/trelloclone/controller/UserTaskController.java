@@ -27,4 +27,10 @@ public class UserTaskController {
     public ResponseEntity<UserTask> updateUserTask(@RequestBody NewUserTaskDTO userTask) {
         return ResponseEntity.ok(userTaskService.updateUserTask(userTask));
     }
+
+    @DeleteMapping("/{userTaskId}")
+    public ResponseEntity<Void> deleteUserTask(@PathVariable(name = "userTaskId") Integer userTaskId) {
+        userTaskRepository.deleteById(userTaskId);
+        return ResponseEntity.noContent().build();
+    }
 }
